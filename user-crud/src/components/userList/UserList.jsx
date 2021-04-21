@@ -27,13 +27,15 @@ function UserList() {
     });
   }, []);
 
-  const users = userList.map((user) => {
-    return (
-      <li className="listElement" key={user.id}>
-        <User id={user.id} name={user.name} birthdate={dayjs(user.birthdate).format("DD MMMM YYYY")} />
-      </li>
-    );
-  });
+  const users = userList
+    .filter((user) => user.name)
+    .map((user) => {
+      return (
+        <li className="listElement" key={user.id}>
+          <User id={user.id} name={user.name} birthdate={dayjs(user.birthdate).format("DD MMMM YYYY")} />
+        </li>
+      );
+    });
 
   return (
     <>
@@ -42,7 +44,7 @@ function UserList() {
           alignItems="center"
           justifyContent="center"
           display="flex"
-          height="7vh"
+          height="40px"
           background="#f8b18e"
           width="100%"
           onClick={() => history.push("/User/add")}
