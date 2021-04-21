@@ -6,4 +6,7 @@ export const ListStyle = styled.div`
   height: 80vh;
   background: red;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

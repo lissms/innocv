@@ -10,9 +10,13 @@ import { updateUser, getUserDetails } from "../../services/user";
 
 //COMPONENTS
 import Button from "../../components/generalComponents/Button";
+import Layout from "../generalComponents/Layout";
 
 //UTILITIES
 import dayjs from "dayjs";
+
+//STYLES
+import { UpdateStyle } from "./Update.styled";
 
 function Update(props) {
   const [userName, setUserName] = useState("");
@@ -29,31 +33,49 @@ function Update(props) {
   }, []);
 
   return (
-    <div>
-      <label for="Name">Name:</label>
-      <input
-        onChange={(ev) => {
-          setUserName(ev.target.value);
-        }}
-        type="text"
-        name="name"
-        id="name"
-        placeholder="Your Name"
-        value={userName}
-      />
-      <label for="Name">Birthdate:</label>
-      <input
-        onChange={(ev) => {
-          setUserBirthday(ev.target.value);
-        }}
-        type="date"
-        id="birthday"
-        name="birthday"
-        value={dayjs(userBirthday).format("YYYY-MM-DD")}
-      ></input>
-      <p>{message}</p>
+    <>
+      <Layout />
+      <UpdateStyle>
+        <p>Update user</p>
+        <label className="update-name" for="Name">
+          Name:
+        </label>
+        <input
+          className="update-name"
+          onChange={(ev) => {
+            setUserName(ev.target.value);
+          }}
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Your Name"
+          value={userName}
+        />
+        <label className="update-birthday" for="Name">
+          Birthdate:
+        </label>
+        <input
+          className="update-birthday"
+          onChange={(ev) => {
+            setUserBirthday(ev.target.value);
+          }}
+          type="date"
+          id="birthday"
+          name="birthday"
+          value={dayjs(userBirthday).format("YYYY-MM-DD")}
+        ></input>
+        <p>{message}</p>
+        <Link className="caracterDatails__link--back" to="/">
+          back to list
+        </Link>
+      </UpdateStyle>
       <Button
-        background="red"
+        alignItems="center"
+        justifyContent="center"
+        display="flex"
+        height="7vh"
+        background="grey"
+        width="100%"
         onClick={() => {
           updateUser(myObjetParam.id, userName, userBirthday);
           setMessage(`the user has been modified successfully`);
@@ -61,10 +83,7 @@ function Update(props) {
       >
         Save
       </Button>
-      <Link className="caracterDatails__link--back" to="/">
-        back to list
-      </Link>
-    </div>
+    </>
   );
 }
 

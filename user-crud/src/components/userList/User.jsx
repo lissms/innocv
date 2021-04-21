@@ -1,23 +1,62 @@
-//REACT
-import React from "react";
+//REACT //HOOKS
+import React, { useState } from "react";
 
 //REACT-ROUTER-DOM
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+//STYLES
+import { UserStyle } from "./User.styled";
+
+//UTILITIES
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 
 //PROPTYPES
 import PropTypes from "prop-types";
 
+//COMPONENTS
+import ModalWindow from "../modalWindow/ModalWindow";
+
 function User(props) {
+  let history = useHistory();
+  function handleClick() {
+    history.push(`/user/detail/${props.id}`);
+  }
+
+  const edit = <FontAwesomeIcon icon={faUserEdit} />;
+  const remove = <FontAwesomeIcon icon={faTrashAlt} />;
+
+  //MODAL
+
+  const [hasModalOpen, setHasModalOpen] = useState(false);
+  const [itemsList, setItemsList] = useState([]);
+
+  const getValueForNewSections = (objet) => {
+    setItemsList([...itemsList, objet]);
+  };
+
+  const showModalWindow = () => {
+    setHasModalOpen(hasModalOpen ? false : true);
+  };
+
   return (
-    <div>
-      <p>{props.name}</p>
-      <p>{props.birthdate}</p>
-      <Link to={`/user/detail/${props.id}`}>Datails</Link>
-      <br />
-      <Link to={`/user/remove/${props.id}`}>Remove</Link>
-      <br />
-      <Link to={`/User/update/${props.id}`}>Edit</Link>
-    </div>
+    <UserStyle>
+      <div className="container_user" onClick={handleClick}>
+        <p>{props.name}</p>
+        <p>{props.birthdate}</p>
+      </div>
+      <div>
+        <div onClick={showModalWindow}>{remove}</div>
+
+        {hasModalOpen ? (
+          <ModalWindow setHasModalOpen={setHasModalOpen} getValueForNewSections={getValueForNewSections} />
+        ) : null}
+
+        <Link to={`/User/update/${props.id}`} title="edit">
+          {edit}
+        </Link>
+      </div>
+    </UserStyle>
   );
 }
 //button reutilizable para eliminar y editar

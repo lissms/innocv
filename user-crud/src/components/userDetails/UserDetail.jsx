@@ -6,19 +6,39 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //SERVICE/ API
-import { getUserDetails, deleteUser } from "../../services/user";
+import { getUserDetails } from "../../services/user";
 
 //COMPONENTS
-import Button from "../generalComponents/Button";
+
+import Layout from "../generalComponents/Layout";
+import ModalWindow from "../modalWindow/ModalWindow";
 
 //UTILITIES
 import dayjs from "dayjs";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons";
+
+//STYLES
+import { UserDetailStyle } from "./UserDetail.styled";
 
 function UserDetail(props) {
+  //modal
+
+  const [hasModalOpen, setHasModalOpen] = useState(false);
+  const [itemsList, setItemsList] = useState([]);
+
+  const getValueForNewSections = (objet) => {
+    setItemsList([...itemsList, objet]);
+  };
+
+  const showModalWindow = () => {
+    setHasModalOpen(hasModalOpen ? false : true);
+  };
+
+  // hooks router
   let myObjetParam = useParams();
 
   const [userDatails, setUserDetail] = useState({});
-  const [message, setMessage] = useState("");
 
   useEffect(() => {
     getUserDetails(myObjetParam.id).then((data) => {
@@ -26,25 +46,35 @@ function UserDetail(props) {
     });
   }, []);
 
-  return (
-    <div>
-      <h1 className="userDatails__name">{`Name: ${userDatails.name}`}</h1>
-      <p className="userDatails__name">{`birthdate: ${dayjs(userDatails.birthdate).format("DD MMMM YYYY")}`}</p>
+  const edit = <FontAwesomeIcon icon={faUserEdit} />;
+  const remove = <FontAwesomeIcon icon={faTrashAlt} />;
 
-      <p>{message}</p>
-      <Button
-        background="#fabada"
-        onClick={() => {
-          deleteUser(myObjetParam.id);
-          setMessage("This user has been removed");
-        }}
-      >
-        Remove
-      </Button>
-      <Link className="caracterDatails__link--back" to="/">
-        back to list
-      </Link>
-    </div>
+  return (
+    <>
+      <Layout />
+      <UserDetailStyle>
+        <div className="user-target">
+          <h1 className="userDatails__name">{`Name: ${userDatails.name}`}</h1>
+          <p className="userDatails__name">{`birthdate: ${dayjs(userDatails.birthdate).format("DD MMMM YYYY")}`}</p>
+          <div className="button-container">
+            <div className="show-modal" onClick={showModalWindow}>
+              {remove}
+            </div>
+            {hasModalOpen ? (
+              <ModalWindow setHasModalOpen={setHasModalOpen} getValueForNewSections={getValueForNewSections} />
+            ) : null}
+
+            <Link to={`/User/update/${props.id}`} title="edit">
+              {edit}
+            </Link>
+          </div>
+        </div>
+
+        <Link className="caracterDatails__link--back" to="/">
+          back to list
+        </Link>
+      </UserDetailStyle>
+    </>
   );
 }
 
