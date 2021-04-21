@@ -13,7 +13,7 @@ import Layout from "../generalComponents/Layout";
 import dayjs from "dayjs";
 
 //STYLES
-import { UpdateStyle } from "./Update.styled";
+import { UpdateContainer, UpdateStyle } from "./Update.styled";
 
 function Update(props) {
   const [userName, setUserName] = useState("");
@@ -36,55 +36,57 @@ function Update(props) {
 
   return (
     <Layout isButtonBackVisible={true}>
-      <UpdateStyle>
-        <p>Update user</p>
-        <form className="from" onSubmit={handleFormSubmit}>
-          <label className="update-name" for="Name">
-            Name:
-          </label>
-          <input
-            className="update-name"
-            onChange={(ev) => {
-              setUserName(ev.target.value);
-              setDisabled(false);
-            }}
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Your Name"
-            value={userName}
-            required
-          />
-          <label className="update-birthday" for="Name">
-            Birthdate:
-          </label>
-          <input
-            className="update-birthday"
-            onChange={(ev) => {
-              setUserBirthday(ev.target.value);
-              setDisabled(false);
-            }}
-            type="date"
-            id="birthday"
-            name="birthday"
-            value={dayjs(userBirthday).format("YYYY-MM-DD")}
-          ></input>
+      <UpdateContainer>
+        <UpdateStyle>
+          <h2 className="title">Update user</h2>
+          <form className="from" onSubmit={handleFormSubmit}>
+            <label className="update-name-label" for="Name">
+              Name:
+            </label>
+            <input
+              className="update-name"
+              onChange={(ev) => {
+                setUserName(ev.target.value);
+                setDisabled(false);
+              }}
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your Name"
+              value={userName}
+              required
+            />
+            <label className="update-birthday-label" for="Name">
+              Birthdate:
+            </label>
+            <input
+              className="update-birthday"
+              onChange={(ev) => {
+                setUserBirthday(ev.target.value);
+                setDisabled(false);
+              }}
+              type="date"
+              id="birthday"
+              name="birthday"
+              value={dayjs(userBirthday).format("YYYY-MM-DD")}
+            ></input>
 
-          <input
-            className="button-save"
-            userName={userName}
-            disabled={disabled === true || userName === ""}
-            onClick={() => {
-              updateUser(myObjetParam.id, userName, userBirthday);
-              setMessage(`the user has been modified successfully`);
-            }}
-            type="submit"
-            value="Save"
-          />
-        </form>
+            <input
+              className="button-save"
+              userName={userName}
+              disabled={disabled === true || userName === ""}
+              onClick={() => {
+                updateUser(myObjetParam.id, userName, userBirthday);
+                setMessage(`the user has been modified successfully`);
+              }}
+              type="submit"
+              value="Save"
+            />
+          </form>
 
-        <p>{message}</p>
-      </UpdateStyle>
+          <p>{message}</p>
+        </UpdateStyle>
+      </UpdateContainer>
     </Layout>
   );
 }
