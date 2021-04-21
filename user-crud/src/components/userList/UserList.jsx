@@ -9,9 +9,13 @@ import { Link } from "react-router-dom";
 
 //COMPONENTS
 import User from "./User";
+import Button from "../generalComponents/Button";
 
 //UTILITIES
 import dayjs from "dayjs";
+
+//STYLES
+import { ListStyle } from "./UserList.styled";
 
 function UserList(props) {
   const [userList, setUserList] = useState([]);
@@ -32,11 +36,10 @@ function UserList(props) {
 
   return (
     <>
-      <div>
-        <h1>User List</h1>
-        <Link to="/User/add">add</Link>
-      </div>
-      <ul className="ul_list">{users}</ul>
+      <ListStyle>{users}</ListStyle>
+      <Button alignItems="center" justifyContent="center" display="flex" height="7vh" background="grey" width="100%">
+        <Link to="/User/add">Add</Link>
+      </Button>
     </>
   );
 }

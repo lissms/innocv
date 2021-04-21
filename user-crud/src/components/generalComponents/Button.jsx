@@ -3,8 +3,23 @@ import React from "react";
 //PROPTYPES
 import PropTypes from "prop-types";
 
+//STYLES
+import { ButtonStyle } from "./Button.styled";
+
 function Button(props) {
-  return <div onClick={props.onClick}> {props.children}</div>;
+  return (
+    <ButtonStyle
+      display={props.display}
+      height={props.height}
+      width={props.width}
+      background={props.background}
+      onClick={props.onClick}
+      justifyContent={props.justifyContent}
+      alignItems={props.alignItems}
+    >
+      {props.children}
+    </ButtonStyle>
+  );
 }
 
 Button.propTypes = {

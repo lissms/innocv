@@ -53,6 +53,7 @@ function Update(props) {
       ></input>
       <p>{message}</p>
       <Button
+        background="red"
         onClick={() => {
           updateUser(myObjetParam.id, userName, userBirthday);
           setMessage(`the user has been modified successfully`);

@@ -9,12 +9,14 @@ import UserDetail from "./components/userDetails/UserDetail.jsx";
 import AddUser from "./components/addUser/AddUser.jsx";
 import Update from "./components/update/Update.jsx";
 import RemoveUser from "./components/removeUser/RemoveUser.jsx";
+import Layout from "./components/generalComponents/Layout";
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route exact path="/">
+          <Layout></Layout>
           <UserList></UserList>
         </Route>
         <Route exact path="/User/add">

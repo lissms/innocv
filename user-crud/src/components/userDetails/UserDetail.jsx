@@ -33,6 +33,7 @@ function UserDetail(props) {
 
       <p>{message}</p>
       <Button
+        background="#fabada"
         onClick={() => {
           deleteUser(myObjetParam.id);
           setMessage("This user has been removed");
