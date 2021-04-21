@@ -37,5 +37,7 @@ export const LayoutStyle = styled.div`
 
 export const Content = styled.div`
   background: linear-gradient(90deg, #3e5c7e 0%, #dc7082 100%);
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 12vh;
+  box-sizing: border-box;
 `;
