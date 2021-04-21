@@ -16,8 +16,6 @@ function ModalWindow(props) {
     props.setHasModalOpen(false);
   };
 
-  let myObjetParam = useParams();
-
   const [message, setMessage] = useState("");
 
   return (
@@ -37,7 +35,7 @@ function ModalWindow(props) {
 
           <Button
             onClick={() => {
-              deleteUser(myObjetParam.id);
+              deleteUser(props.id);
               setMessage("This user has been removed");
             }}
           >
@@ -51,6 +49,7 @@ function ModalWindow(props) {
 }
 
 ModalWindow.propTypes = {
+  id: PropTypes.number,
   userName: PropTypes.string,
   getValueForNewSections: PropTypes.func,
   setHasModalOpen: PropTypes.func,

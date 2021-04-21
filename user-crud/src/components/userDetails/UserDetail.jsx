@@ -62,6 +62,7 @@ function UserDetail() {
             </div>
             {hasModalOpen ? (
               <ModalWindow
+                id={userDatails.id}
                 userName={userDatails.name}
                 setHasModalOpen={setHasModalOpen}
                 getValueForNewSections={getValueForNewSections}

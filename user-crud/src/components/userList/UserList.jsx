@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { getUser } from "../../services/user";
 
 //REACT-ROUTER-DOM
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 //COMPONENTS
 import User from "./User";
@@ -15,10 +15,11 @@ import Button from "../generalComponents/Button";
 import dayjs from "dayjs";
 
 //STYLES
-import { ListStyle } from "./UserList.styled";
+import { ListStyle, ButtonContainer } from "./UserList.styled";
 
-function UserList(props) {
+function UserList() {
   const [userList, setUserList] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     getUser().then((data) => {
@@ -36,12 +37,20 @@ function UserList(props) {
 
   return (
     <>
-      <ListStyle>{users}</ListStyle>
-      <Link to="/User/add">
-        <Button alignItems="center" justifyContent="center" display="flex" height="7vh" background="grey" width="100%">
+      <ButtonContainer>
+        <Button
+          alignItems="center"
+          justifyContent="center"
+          display="flex"
+          height="7vh"
+          background="#f8b18e"
+          width="100%"
+          onClick={() => history.push("/User/add")}
+        >
           Add
         </Button>
-      </Link>
+      </ButtonContainer>
+      <ListStyle>{users}</ListStyle>
     </>
   );
 }
