@@ -2,16 +2,16 @@
 import React, { useState, useEffect } from "react";
 
 //SERVICE/ API
-import { getUser } from "../../Api/Api";
+import { getUser } from "../../services/user";
 
 //REACT-ROUTER-DOM
 import { Link } from "react-router-dom";
 
 //COMPONENTS
-import User from "../../Component/UserList/User";
+import User from "./User";
 
-//PROPTYPES
-import PropTypes from "prop-types";
+//UTILITIES
+import dayjs from "dayjs";
 
 function UserList(props) {
   const [userList, setUserList] = useState([]);
@@ -22,10 +22,10 @@ function UserList(props) {
     });
   }, []);
 
-  const Users = userList.map((user) => {
+  const users = userList.map((user) => {
     return (
       <li className="listElement" key={user.id}>
-        <User id={user.id} name={user.name} birthdate={user.birthdate} />
+        <User id={user.id} name={user.name} birthdate={dayjs(user.birthdate).format("DD MMMM YYYY")} />
       </li>
     );
   });
@@ -36,11 +36,9 @@ function UserList(props) {
         <h1>User List</h1>
         <Link to="/User/add">add</Link>
       </div>
-      <ul className="ul_list">{Users}</ul>
+      <ul className="ul_list">{users}</ul>
     </>
   );
 }
-
-UserList.propTypes = {};
 
 export default UserList;

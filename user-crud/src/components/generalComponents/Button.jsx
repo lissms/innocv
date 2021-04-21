@@ -7,6 +7,9 @@ function Button(props) {
   return <div onClick={props.onClick}> {props.children}</div>;
 }
 
-Button.propTypes = {};
+Button.propTypes = {
+  children: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 export default Button;

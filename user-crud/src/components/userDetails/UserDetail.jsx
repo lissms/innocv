@@ -6,15 +6,15 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //SERVICE/ API
-import { getUserDetails, deleteUser } from "../../Api/Api";
+import { getUserDetails, deleteUser } from "../../services/user";
 
 //COMPONENTS
-import Button from "../../Component/generalComponents/Button";
+import Button from "../generalComponents/Button";
 
-//PROPTYPES
-import PropTypes from "prop-types";
+//UTILITIES
+import dayjs from "dayjs";
 
-function RemoveUser(props) {
+function UserDetail(props) {
   let myObjetParam = useParams();
 
   const [userDatails, setUserDetail] = useState({});
@@ -28,12 +28,10 @@ function RemoveUser(props) {
 
   return (
     <div>
-      <Link className="caracterDatails__link--back" to="/">
-        X
-      </Link>
-      <p>{`Are you sure you want to remove ${userDatails.name} permanently?`}</p>
-      <p>{message}</p>
+      <h1 className="userDatails__name">{`Name: ${userDatails.name}`}</h1>
+      <p className="userDatails__name">{`birthdate: ${dayjs(userDatails.birthdate).format("DD MMMM YYYY")}`}</p>
 
+      <p>{message}</p>
       <Button
         onClick={() => {
           deleteUser(myObjetParam.id);
@@ -43,12 +41,10 @@ function RemoveUser(props) {
         Remove
       </Button>
       <Link className="caracterDatails__link--back" to="/">
-        cancel
+        back to list
       </Link>
     </div>
   );
 }
 
-RemoveUser.propTypes = {};
-
-export default RemoveUser;
+export default UserDetail;

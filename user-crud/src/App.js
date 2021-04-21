@@ -4,11 +4,11 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 
 //COMPONENTS
-import UserList from "./Component/UserList/UserList";
-import UserDetail from "./Component/userDetails/UserDetail.jsx";
-import AddUser from "./Component/addUser/AddUser.jsx";
-import Update from "./Component/update/Update.jsx";
-import RemoveUser from "./Component/removeUser/RemoveUser.jsx";
+import UserList from "./components/userList/UserList";
+import UserDetail from "./components/userDetails/UserDetail.jsx";
+import AddUser from "./components/addUser/AddUser.jsx";
+import Update from "./components/update/Update.jsx";
+import RemoveUser from "./components/removeUser/RemoveUser.jsx";
 
 function App() {
   return (

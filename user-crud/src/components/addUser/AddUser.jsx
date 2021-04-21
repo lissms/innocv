@@ -8,10 +8,7 @@ import Button from "../generalComponents/Button";
 
 //SERVICE/ API
 
-import { addNewUser } from "../../Api/Api";
-
-//PROPTYPES
-import PropTypes from "prop-types";
+import { addNewUser } from "../../services/user";
 
 function AddUser(props) {
   const [newUserName, setNewUserName] = useState("");
@@ -56,6 +53,5 @@ function AddUser(props) {
     </div>
   );
 }
-AddUser.propTypes = {};
 
 export default AddUser;

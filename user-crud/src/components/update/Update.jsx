@@ -6,13 +6,13 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //SERVICE/ API
-import { updateUser, getUserDetails } from "../../Api/Api";
+import { updateUser, getUserDetails } from "../../services/user";
 
 //COMPONENTS
-import Button from "../../Component/generalComponents/Button";
+import Button from "../../components/generalComponents/Button";
 
-//PROPTYPES
-import PropTypes from "prop-types";
+//UTILITIES
+import dayjs from "dayjs";
 
 function Update(props) {
   const [userName, setUserName] = useState("");
@@ -49,7 +49,7 @@ function Update(props) {
         type="date"
         id="birthday"
         name="birthday"
-        value={userBirthday}
+        value={dayjs(userBirthday).format("YYYY-MM-DD")}
       ></input>
       <p>{message}</p>
       <Button
@@ -66,7 +66,5 @@ function Update(props) {
     </div>
   );
 }
-
-Update.propTypes = {};
 
 export default Update;

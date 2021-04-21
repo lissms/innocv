@@ -21,6 +21,10 @@ function User(props) {
   );
 }
 //button reutilizable para eliminar y editar
-User.propTypes = {};
+User.propTypes = {
+  name: PropTypes.string,
+  birthdate: PropTypes.string,
+  id: PropTypes.number,
+};
 
 export default User;

@@ -6,14 +6,12 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //SERVICE/ API
-import { getUserDetails, deleteUser } from "../../Api/Api";
+import { getUserDetails, deleteUser } from "../../services/user";
 
 //COMPONENTS
-import Button from "../generalComponents/Button";
+import Button from "../../components/generalComponents/Button";
 
-import PropTypes from "prop-types";
-
-function UserDetail(props) {
+function RemoveUser(props) {
   let myObjetParam = useParams();
 
   const [userDatails, setUserDetail] = useState({});
@@ -27,9 +25,12 @@ function UserDetail(props) {
 
   return (
     <div>
-      <h1 className="userDatails__name">{`Name: ${userDatails.name}`}</h1>
-      <p className="userDatails__name">{`birthdate: ${userDatails.birthdate}`}</p>
+      <Link className="caracterDatails__link--back" to="/">
+        X
+      </Link>
+      <p>{`Are you sure you want to remove ${userDatails.name} permanently?`}</p>
       <p>{message}</p>
+
       <Button
         onClick={() => {
           deleteUser(myObjetParam.id);
@@ -39,12 +40,10 @@ function UserDetail(props) {
         Remove
       </Button>
       <Link className="caracterDatails__link--back" to="/">
-        back to list
+        cancel
       </Link>
     </div>
   );
 }
 
-UserDetail.propTypes = {};
-
-export default UserDetail;
+export default RemoveUser;
