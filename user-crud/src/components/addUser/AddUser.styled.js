@@ -6,7 +6,7 @@ export const AddUserStyle = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 73vh;
-  margin-top: 50px;
+  margin-top: 14vh;
 
   & .from {
     display: flex;
