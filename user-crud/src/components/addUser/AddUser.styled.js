@@ -34,6 +34,7 @@ export const AddUserStyle = styled.div`
     bottom: 0;
     left: 0;
   }
+
   & .user-name {
     color: red;
     font-weight: bold;

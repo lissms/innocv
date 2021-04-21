@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import logo from "../../images/innocv-logo.jpg";
+import logo from "../../images/innocv-logo.png";
 
 //REACT-ROUTER-DOM
 import { useHistory } from "react-router-dom";

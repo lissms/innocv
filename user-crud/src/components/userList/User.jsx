@@ -40,29 +40,31 @@ function User(props) {
     setHasModalOpen(hasModalOpen ? false : true);
   };
 
+  const goEditUser = () => history.push(`/User/update/${props.id}`);
+
   return (
     <UserStyle>
       <div className="container_user" onClick={handleClick}>
-        <p>{props.name}</p>
-        <p>{props.birthdate}</p>
+        <p className="name">{props.name}</p>
+        <p className="birthday">{props.birthdate}</p>
       </div>
-      <div>
-        <div className="remove-button" onClick={showModalWindow}>
+      <div className="button_container">
+        <button className="button remove-button" onClick={showModalWindow}>
           {remove}
-        </div>
+        </button>
 
-        {hasModalOpen ? (
-          <ModalWindow
-            userName={props.name}
-            setHasModalOpen={setHasModalOpen}
-            getValueForNewSections={getValueForNewSections}
-          />
-        ) : null}
-
-        <Link to={`/User/update/${props.id}`} title="edit">
+        <button className="button" title="edit" onClick={goEditUser}>
           {edit}
-        </Link>
+        </button>
       </div>
+      {hasModalOpen ? (
+        <ModalWindow
+          id={props.id}
+          userName={props.name}
+          setHasModalOpen={setHasModalOpen}
+          getValueForNewSections={getValueForNewSections}
+        />
+      ) : null}
     </UserStyle>
   );
 }
