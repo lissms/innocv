@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 
 //REACT-ROUTER-DOM
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 //STYLES

@@ -5,8 +5,6 @@ export const UserDetailStyle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: red;
-  height: 78vh;
 
   & .user-target {
     display: flex;
@@ -19,13 +17,28 @@ export const UserDetailStyle = styled.div`
     margin-top: 50px;
     border-radius: 20px;
   }
+  & .user-target span {
+    font-size: 14px;
+    font-weight: 100;
+  }
   & .show-modal {
     cursor: pointer;
   }
-  & .button-container {
+  & .button_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 53px;
+    margin-top: 14px;
+  }
+
+  & .button {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    margin: 3px;
+    background: #f17680;
+    border: none;
+    color: white;
+    border-radius: 4px;
   }
 `;

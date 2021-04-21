@@ -13,6 +13,9 @@ import { getUserDetails } from "../../services/user";
 import Layout from "../generalComponents/Layout";
 import ModalWindow from "../modalWindow/ModalWindow";
 
+//REACT-ROUTER-DOM
+import { useHistory } from "react-router-dom";
+
 //UTILITIES
 import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,10 +25,9 @@ import { faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { UserDetailStyle } from "./UserDetail.styled";
 
 function UserDetail() {
-  //modal
-
   const [hasModalOpen, setHasModalOpen] = useState(false);
   const [itemsList, setItemsList] = useState([]);
+  let history = useHistory();
 
   const getValueForNewSections = (objet) => {
     setItemsList([...itemsList, objet]);
@@ -34,6 +36,8 @@ function UserDetail() {
   const showModalWindow = () => {
     setHasModalOpen(hasModalOpen ? false : true);
   };
+
+  const goEditUser = () => history.push(`/User/update/${myObjetParam.id}`);
 
   // hooks router
   let myObjetParam = useParams();
@@ -54,16 +58,18 @@ function UserDetail() {
       <Layout isButtonBackVisible={true}>
         <UserDetailStyle>
           <div className="user-target">
-            <h1 className="userDatails__name">{`Name: ${userDatails.name}`}</h1>
-            <p className="userDatails__name">{`birthdate: ${dayjs(userDatails.birthdate).format("DD MMMM YYYY")}`}</p>
-            <div className="button-container">
-              <div className="show-modal" onClick={showModalWindow}>
+            <span>Name: </span>
+            <h1 className="userDatails">{userDatails.name}</h1>
+            <span>Birthdate:</span>
+            <h3 className="userDatails">{dayjs(userDatails.birthdate).format("DD MMMM YYYY")}</h3>
+            <div className="button_container">
+              <button className="button remove-button" onClick={showModalWindow}>
                 {remove}
-              </div>
+              </button>
 
-              <Link to={`/User/update/${myObjetParam.id}`} title="edit">
+              <button className="button" title="edit" onClick={goEditUser}>
                 {edit}
-              </Link>
+              </button>
             </div>
           </div>
           {hasModalOpen ? (
