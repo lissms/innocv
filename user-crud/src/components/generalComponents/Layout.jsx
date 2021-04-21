@@ -6,7 +6,7 @@ import logo from "../../images/innocv-logo.png";
 import { useHistory } from "react-router-dom";
 
 //STYLES
-import { LayoutStyle } from "./Layout.styled";
+import { LayoutStyle, Content } from "./Layout.styled";
 
 //UTILITIES
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,7 +22,7 @@ function Layout(props) {
   }
 
   return (
-    <>
+    <div>
       <LayoutStyle>
         <div className="title-logo">
           <img className="logo" src={logo} alt="Logo Innocv"></img>
@@ -34,7 +34,8 @@ function Layout(props) {
           </div>
         ) : null}
       </LayoutStyle>
-    </>
+      <Content>{props.children}</Content>
+    </div>
   );
 }
 

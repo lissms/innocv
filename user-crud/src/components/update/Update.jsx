@@ -35,8 +35,7 @@ function Update(props) {
   };
 
   return (
-    <>
-      <Layout isButtonBackVisible={true} />
+    <Layout isButtonBackVisible={true}>
       <UpdateStyle>
         <p>Update user</p>
         <form className="from" onSubmit={handleFormSubmit}>
@@ -86,7 +85,7 @@ function Update(props) {
 
         <p>{message}</p>
       </UpdateStyle>
-    </>
+    </Layout>
   );
 }
 

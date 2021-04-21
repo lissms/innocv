@@ -51,30 +51,31 @@ function UserDetail() {
 
   return (
     <>
-      <Layout isButtonBackVisible={true} />
-      <UserDetailStyle>
-        <div className="user-target">
-          <h1 className="userDatails__name">{`Name: ${userDatails.name}`}</h1>
-          <p className="userDatails__name">{`birthdate: ${dayjs(userDatails.birthdate).format("DD MMMM YYYY")}`}</p>
-          <div className="button-container">
-            <div className="show-modal" onClick={showModalWindow}>
-              {remove}
-            </div>
-            {hasModalOpen ? (
-              <ModalWindow
-                id={userDatails.id}
-                userName={userDatails.name}
-                setHasModalOpen={setHasModalOpen}
-                getValueForNewSections={getValueForNewSections}
-              />
-            ) : null}
+      <Layout isButtonBackVisible={true}>
+        <UserDetailStyle>
+          <div className="user-target">
+            <h1 className="userDatails__name">{`Name: ${userDatails.name}`}</h1>
+            <p className="userDatails__name">{`birthdate: ${dayjs(userDatails.birthdate).format("DD MMMM YYYY")}`}</p>
+            <div className="button-container">
+              <div className="show-modal" onClick={showModalWindow}>
+                {remove}
+              </div>
 
-            <Link to={`/User/update/${myObjetParam.id}`} title="edit">
-              {edit}
-            </Link>
+              <Link to={`/User/update/${myObjetParam.id}`} title="edit">
+                {edit}
+              </Link>
+            </div>
           </div>
-        </div>
-      </UserDetailStyle>
+          {hasModalOpen ? (
+            <ModalWindow
+              id={myObjetParam.id}
+              userName={userDatails.name}
+              setHasModalOpen={setHasModalOpen}
+              getValueForNewSections={getValueForNewSections}
+            />
+          ) : null}
+        </UserDetailStyle>
+      </Layout>
     </>
   );
 }

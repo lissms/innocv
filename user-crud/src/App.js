@@ -16,8 +16,9 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <Layout isButtonBackVisible={false}></Layout>
-          <UserList></UserList>
+          <Layout isButtonBackVisible={false}>
+            <UserList></UserList>
+          </Layout>
         </Route>
         <Route exact path="/User/add">
           <AddUser></AddUser>
