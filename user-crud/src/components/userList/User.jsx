@@ -4,6 +4,7 @@ import React, { useState } from "react";
 //REACT-ROUTER-DOM
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+
 //STYLES
 import { UserStyle } from "./User.styled";
 
@@ -22,11 +23,11 @@ function User(props) {
   function handleClick() {
     history.push(`/user/detail/${props.id}`);
   }
-
+  // icon
   const edit = <FontAwesomeIcon icon={faUserEdit} />;
   const remove = <FontAwesomeIcon icon={faTrashAlt} />;
 
-  //MODAL
+  //modal
 
   const [hasModalOpen, setHasModalOpen] = useState(false);
   const [itemsList, setItemsList] = useState([]);
@@ -46,10 +47,16 @@ function User(props) {
         <p>{props.birthdate}</p>
       </div>
       <div>
-        <div onClick={showModalWindow}>{remove}</div>
+        <div className="remove-button" onClick={showModalWindow}>
+          {remove}
+        </div>
 
         {hasModalOpen ? (
-          <ModalWindow setHasModalOpen={setHasModalOpen} getValueForNewSections={getValueForNewSections} />
+          <ModalWindow
+            userName={props.name}
+            setHasModalOpen={setHasModalOpen}
+            getValueForNewSections={getValueForNewSections}
+          />
         ) : null}
 
         <Link to={`/User/update/${props.id}`} title="edit">
@@ -59,7 +66,7 @@ function User(props) {
     </UserStyle>
   );
 }
-//button reutilizable para eliminar y editar
+
 User.propTypes = {
   name: PropTypes.string,
   birthdate: PropTypes.string,

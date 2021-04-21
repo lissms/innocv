@@ -1,9 +1,9 @@
 //REACT// HOOKS
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 //SERVICE/ API
-import { getUserDetails, deleteUser } from "../../services/user";
+import { deleteUser } from "../../services/user";
 
 //COMPONENTS
 import Button from "../../components/generalComponents/Button";
@@ -18,27 +18,21 @@ function ModalWindow(props) {
 
   let myObjetParam = useParams();
 
-  const [userDatails, setUserDetail] = useState({});
   const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    getUserDetails(myObjetParam.id).then((data) => {
-      setUserDetail(data);
-    });
-  }, []);
 
   return (
     <Modal>
       <div className="modal-container">
         <div className="title-modal">
-          <h2>Add New Sections</h2>
+          <p>
+            Are you sure you want to remove <b>{props.userName}</b> permanently?
+          </p>
 
           <Close onClick={CloseModalWindow}>
             <p>X</p>
           </Close>
         </div>
         <div>
-          <p>{`Are you sure you want to remove ${userDatails.name} permanently?`}</p>
           <p>{message}</p>
 
           <Button
@@ -57,6 +51,7 @@ function ModalWindow(props) {
 }
 
 ModalWindow.propTypes = {
+  userName: PropTypes.string,
   getValueForNewSections: PropTypes.func,
   setHasModalOpen: PropTypes.func,
 };

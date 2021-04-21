@@ -14,4 +14,7 @@ export const UserStyle = styled.div`
   & .container_user {
     cursor: pointer;
   }
+  & .remove-button {
+    cursor: pointer;
+  }
 `;

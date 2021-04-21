@@ -37,9 +37,11 @@ function UserList(props) {
   return (
     <>
       <ListStyle>{users}</ListStyle>
-      <Button alignItems="center" justifyContent="center" display="flex" height="7vh" background="grey" width="100%">
-        <Link to="/User/add">Add</Link>
-      </Button>
+      <Link to="/User/add">
+        <Button alignItems="center" justifyContent="center" display="flex" height="7vh" background="grey" width="100%">
+          Add
+        </Button>
+      </Link>
     </>
   );
 }

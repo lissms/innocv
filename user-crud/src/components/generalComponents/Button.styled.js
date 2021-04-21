@@ -7,4 +7,5 @@ export const ButtonStyle = styled.div`
   display: ${(props) => `${props.display}`};
   justify-content: ${(props) => `${props.justifyContent}`};
   align-items: ${(props) => `${props.alignItems}`};
+  cursor: ${(props) => `${props.cursor}`};
 `;

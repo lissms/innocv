@@ -21,7 +21,7 @@ import { faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 //STYLES
 import { UserDetailStyle } from "./UserDetail.styled";
 
-function UserDetail(props) {
+function UserDetail() {
   //modal
 
   const [hasModalOpen, setHasModalOpen] = useState(false);
@@ -51,7 +51,7 @@ function UserDetail(props) {
 
   return (
     <>
-      <Layout />
+      <Layout isButtonBackVisible={true} />
       <UserDetailStyle>
         <div className="user-target">
           <h1 className="userDatails__name">{`Name: ${userDatails.name}`}</h1>
@@ -61,18 +61,18 @@ function UserDetail(props) {
               {remove}
             </div>
             {hasModalOpen ? (
-              <ModalWindow setHasModalOpen={setHasModalOpen} getValueForNewSections={getValueForNewSections} />
+              <ModalWindow
+                userName={userDatails.name}
+                setHasModalOpen={setHasModalOpen}
+                getValueForNewSections={getValueForNewSections}
+              />
             ) : null}
 
-            <Link to={`/User/update/${props.id}`} title="edit">
+            <Link to={`/User/update/${myObjetParam.id}`} title="edit">
               {edit}
             </Link>
           </div>
         </div>
-
-        <Link className="caracterDatails__link--back" to="/">
-          back to list
-        </Link>
       </UserDetailStyle>
     </>
   );

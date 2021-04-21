@@ -16,6 +16,7 @@ function Button(props) {
       onClick={props.onClick}
       justifyContent={props.justifyContent}
       alignItems={props.alignItems}
+      cursor={props.cursor}
     >
       {props.children}
     </ButtonStyle>
