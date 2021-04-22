@@ -1,5 +1,6 @@
 //REACT// HOOKS
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 //SERVICE/ API
 import { getUser } from "../../services/user";
@@ -18,6 +19,9 @@ import dayjs from "dayjs";
 import { ListStyle, ButtonContainer } from "./UserList.styled";
 
 function UserList() {
+  //translation
+  const { t, i18n } = useTranslation();
+
   const [userList, setUserList] = useState([]);
   const history = useHistory();
 
@@ -49,7 +53,7 @@ function UserList() {
           width="100%"
           onClick={() => history.push("/User/add")}
         >
-          Add
+          {t("add")}
         </Button>
       </ButtonContainer>
       <ListStyle>{users}</ListStyle>

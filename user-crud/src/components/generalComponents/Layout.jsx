@@ -1,6 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
-import logo from "../../images/innocv-logo.png";
+
+// HOOKS
+import { useTranslation } from "react-i18next";
 
 //REACT-ROUTER-DOM
 import { useHistory } from "react-router-dom";
@@ -9,13 +10,20 @@ import { useHistory } from "react-router-dom";
 import { LayoutStyle, Content } from "./Layout.styled";
 
 //UTILITIES
+import logo from "../../images/innocv-logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
+//PROPTYPES
+import PropTypes from "prop-types";
+
 function Layout(props) {
+  //translation
+  const { t, i18n } = useTranslation();
+
   // icon
   const back = <FontAwesomeIcon icon={faArrowLeft} />;
-
+  //react router
   let history = useHistory();
   function handleClick() {
     history.push(`/`);
@@ -26,13 +34,30 @@ function Layout(props) {
       <LayoutStyle>
         <div className="title-logo">
           <img className="logo" src={logo} alt="Logo Innocv"></img>
-          <h1 className="title">User manager</h1>
+          <h1 className="title">{t("title")}</h1>
         </div>
+
         {props.isButtonBackVisible ? (
           <div className="link--back" onClick={handleClick}>
             {back}
           </div>
         ) : null}
+        <div className="translation">
+          <div
+            onClick={() => {
+              i18n.changeLanguage("en-US");
+            }}
+          >
+            <p>En</p>
+          </div>
+          <div
+            onClick={() => {
+              i18n.changeLanguage("es-US");
+            }}
+          >
+            <p> Es</p>
+          </div>
+        </div>
       </LayoutStyle>
       <Content>{props.children}</Content>
     </div>

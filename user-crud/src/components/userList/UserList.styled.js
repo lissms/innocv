@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const ListStyle = styled.ul`
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  gap: 16px;
   padding-bottom: 50px;
   margin-top: 16px;
 

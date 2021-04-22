@@ -1,6 +1,7 @@
 //REACT// HOOKS
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 //SERVICE/ API
 import { updateUser, getUserDetails } from "../../services/user";
@@ -16,6 +17,9 @@ import dayjs from "dayjs";
 import { UpdateContainer, UpdateStyle } from "./Update.styled";
 
 function Update(props) {
+  //translation
+  const { t, i18n } = useTranslation();
+
   const [userName, setUserName] = useState("");
   const [userBirthday, setUserBirthday] = useState("");
   const [message, setMessage] = useState("");
@@ -38,10 +42,10 @@ function Update(props) {
     <Layout isButtonBackVisible={true}>
       <UpdateContainer>
         <UpdateStyle>
-          <h2 className="title">Update user</h2>
+          <h2 className="title">{t("updateTiTle")}</h2>
           <form className="from" onSubmit={handleFormSubmit}>
             <label className="update-name-label" for="Name">
-              Name:
+              {t("name")}
             </label>
             <input
               className="update-name"
@@ -57,7 +61,7 @@ function Update(props) {
               required
             />
             <label className="update-birthday-label" for="Name">
-              Birthdate:
+              {t("birthdate")}
             </label>
             <input
               className="update-birthday"
@@ -77,14 +81,14 @@ function Update(props) {
               disabled={disabled === true || userName === ""}
               onClick={() => {
                 updateUser(myObjetParam.id, userName, userBirthday);
-                setMessage(`the user has been modified successfully`);
+                setMessage("messageUpdate");
               }}
               type="submit"
-              value="Save"
+              value={t("update")}
             />
           </form>
 
-          <p>{message}</p>
+          <p>{t(`${message}`)}</p>
         </UpdateStyle>
       </UpdateContainer>
     </Layout>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 //COMPONENTS
-import Button from "../generalComponents/Button";
+
 import Layout from "../generalComponents/Layout";
 
 //STYLES
@@ -12,6 +13,9 @@ import { AddUserContainer, AddUserStyle } from "./AddUser.styled";
 import { addNewUser } from "../../services/user";
 
 function AddUser(props) {
+  //translation
+  const { t, i18n } = useTranslation();
+
   const [newUserName, setNewUserName] = useState("");
   const [newUserBirthday, setNewUserBirthday] = useState("");
   const [message, setMessage] = useState("");
@@ -29,10 +33,10 @@ function AddUser(props) {
       <Layout isButtonBackVisible={true}>
         <AddUserContainer>
           <AddUserStyle>
-            <h2 className="title">Add new user</h2>
+            <h2 className="title">{t("addNewUser")}</h2>
             <form className="from" onSubmit={handleFormSubmit}>
               <label className="add-name-label" for="Name">
-                Name*:
+                {`${t("name")}*`}
               </label>
               <input
                 className="add-name"
@@ -47,7 +51,7 @@ function AddUser(props) {
                 required
               />
               <label className="add-birthday-label" for="Name">
-                Birthdate*:
+                {`${t("birthdate")}*`}
               </label>
               <input
                 className="add-birthday"
@@ -68,10 +72,11 @@ function AddUser(props) {
                 disabled={name === "" || birthday === ""}
                 onClick={() => {
                   addNewUser(newUserName, newUserBirthday);
-                  setMessage(`The user named  ${newUserName} has been added successfully`);
+
+                  setMessage(`${t("messageSave1")}  ${newUserName} ${t("messageSave2")}`);
                 }}
                 type="submit"
-                value="Save"
+                value={t("save")}
               />
             </form>
             <p>{message}</p>

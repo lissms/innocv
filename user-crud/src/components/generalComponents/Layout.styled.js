@@ -16,6 +16,8 @@ export const LayoutStyle = styled.div`
     color: white;
     margin-left: 16px;
     font-weight: 100;
+    font-size: 24px;
+    padding: 5px;
   }
   & .logo {
     width: 100px;
@@ -27,11 +29,19 @@ export const LayoutStyle = styled.div`
   }
   & .link--back {
     cursor: pointer;
-    width: 70px;
+    width: 60px;
     color: white;
   }
   & .content {
     background: linear-gradient(90deg, #3e5c7e 0%, #dc7082 100%);
+  }
+  & .translation {
+    color: white;
+    cursor: pointer;
+    width: 50px;
+    position: absolute;
+    right: 0px;
+    font-size: 14px;
   }
 `;
 

@@ -1,5 +1,6 @@
 //REACT// HOOKS
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 //REACT-ROUTER-DOM
 import { useHistory } from "react-router-dom";
@@ -18,6 +19,9 @@ import { Modal, Close } from "./ModalWindow.styled";
 import PropTypes from "prop-types";
 
 function ModalWindow(props) {
+  //translation
+  const { t, i18n } = useTranslation();
+
   const history = useHistory();
 
   const closeModalWindow = () => {
@@ -32,13 +36,13 @@ function ModalWindow(props) {
         <Close onClick={closeModalWindow}>{close}</Close>
         <div className="title-modal">
           <p>
-            Are you sure you want to remove <b>{props.userName}</b> permanently?
+            {t("modalMessage1")} <b>{props.userName}</b> {t("modalMessage2")}
           </p>
         </div>
         <div>
           <div className="button_container">
             <Button background="#caa4ea" onClick={closeModalWindow}>
-              Cancel
+              {t("cancel")}
             </Button>
             <Button
               background="#f17680"
@@ -48,7 +52,7 @@ function ModalWindow(props) {
                 history.push("/");
               }}
             >
-              Remove
+              {t("remove")}
             </Button>
           </div>
         </div>
