@@ -39,7 +39,7 @@ function User(props) {
     setHasModalOpen(hasModalOpen ? false : true);
   };
 
-  const goEditUser = () => history.push(`/User/update/${props.id}`);
+  const goEditUser = () => history.push(`/user/update/${props.id}`);
 
   return (
     <UserStyle>

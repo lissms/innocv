@@ -15,6 +15,7 @@ export const UserStyle = styled.div`
     flex-direction: column;
     align-items: flex-start;
   }
+
   & .name {
     font-weight: bold;
     font-size: 18px;

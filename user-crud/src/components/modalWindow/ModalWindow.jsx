@@ -15,12 +15,15 @@ import Button from "../../components/generalComponents/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
+//STYLES
 import { Modal, Close } from "./ModalWindow.styled";
+
+//PROPTYPES
 import PropTypes from "prop-types";
 
 function ModalWindow(props) {
   //translation
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const history = useHistory();
 

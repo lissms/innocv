@@ -9,6 +9,7 @@ import { getUser } from "../../services/user";
 import { useHistory } from "react-router-dom";
 
 //COMPONENTS
+import Layout from "../generalComponents/Layout";
 import User from "./User";
 import Button from "../generalComponents/Button";
 
@@ -20,7 +21,7 @@ import { ListStyle, ButtonContainer } from "./UserList.styled";
 
 function UserList() {
   //translation
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [userList, setUserList] = useState([]);
   const history = useHistory();
@@ -42,7 +43,7 @@ function UserList() {
     });
 
   return (
-    <>
+    <Layout isButtonBackVisible={false}>
       <ButtonContainer>
         <Button
           alignItems="center"
@@ -51,13 +52,13 @@ function UserList() {
           height="40px"
           background="#f8b18e"
           width="100%"
-          onClick={() => history.push("/User/add")}
+          onClick={() => history.push("/user/add")}
         >
           {t("add")}
         </Button>
       </ButtonContainer>
       <ListStyle>{users}</ListStyle>
-    </>
+    </Layout>
   );
 }
 

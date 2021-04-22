@@ -10,12 +10,14 @@ export const Modal = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 43, 69, 0.9);
+
   & form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
+
   & .modal-container {
     background-color: rgb(224, 224, 224);
     width: 50%;
@@ -23,12 +25,14 @@ export const Modal = styled.div`
     padding: 24px 32px 16px 32px;
     position: relative;
   }
+
   & .title-modal {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
   }
+
   & .button_container {
     display: flex;
     justify-content: center;
@@ -51,15 +55,19 @@ export const InputTitle = styled.input`
   border-radius: 4px;
   margin: 12px;
   padding: 15px;
+
   &::-webkit-input-placeholder {
     color: rgb(91, 141, 207);
   }
+
   &:-moz-placeholder {
     color: rgb(91, 141, 207);
   }
+
   &::-moz-placeholder {
     color: rgb(91, 141, 207);
   }
+
   &:-ms-input-placeholder {
     color: rgb(91, 141, 207);
   }
@@ -72,15 +80,19 @@ export const Textarea = styled.textarea`
   border-radius: 4px;
   padding: 15px;
   margin-bottom: 12px;
+
   &::-webkit-input-placeholder {
     color: rgb(91, 141, 207);
   }
+
   &:-moz-placeholder {
     color: rgb(91, 141, 207);
   }
+
   &::-moz-placeholder {
     color: rgb(91, 141, 207);
   }
+
   &:-ms-input-placeholder {
     color: rgb(91, 141, 207);
   }
@@ -103,6 +115,7 @@ export const InputSubmit = styled.input`
   transition: transform ease 0.3s;
   color: ${(props) => (props.text === "" || props.title === "" ? `rgb(224, 224, 224)` : `rgb(91, 141, 207)`)};
   border: ${(props) => (props.text === "" || props.title === "" ? `#827a7a` : `solid 2px rgb(91, 141, 207)`)};
+
   &:hover {
     transform: scale(1.05);
   }
@@ -120,6 +133,7 @@ export const Close = styled.div`
   position: absolute;
   top: 8px;
   right: 8px;
+
   & p {
     font-size: 15px;
     color: rgb(91, 141, 207);

@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import { getUserDetails } from "../../services/user";
 
 //COMPONENTS
-
 import Layout from "../generalComponents/Layout";
 import ModalWindow from "../modalWindow/ModalWindow";
 
@@ -24,7 +23,7 @@ import { UserDetailStyle } from "./UserDetail.styled";
 
 function UserDetail() {
   //translation
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [hasModalOpen, setHasModalOpen] = useState(false);
   const [itemsList, setItemsList] = useState([]);
@@ -38,7 +37,7 @@ function UserDetail() {
     setHasModalOpen(hasModalOpen ? false : true);
   };
 
-  const goEditUser = () => history.push(`/User/update/${myObjetParam.id}`);
+  const goEditUser = () => history.push(`/user/update/${myObjetParam.id}`);
 
   // hooks router
   let myObjetParam = useParams();

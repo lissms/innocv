@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import { updateUser, getUserDetails } from "../../services/user";
 
 //COMPONENTS
-
 import Layout from "../generalComponents/Layout";
 
 //UTILITIES
@@ -16,9 +15,9 @@ import dayjs from "dayjs";
 //STYLES
 import { UpdateContainer, UpdateStyle } from "./Update.styled";
 
-function Update(props) {
+function Update() {
   //translation
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [userName, setUserName] = useState("");
   const [userBirthday, setUserBirthday] = useState("");
@@ -74,7 +73,6 @@ function Update(props) {
               name="birthday"
               value={dayjs(userBirthday).format("YYYY-MM-DD")}
             ></input>
-
             <input
               className="button-save"
               userName={userName}
@@ -87,7 +85,6 @@ function Update(props) {
               value={t("update")}
             />
           </form>
-
           <p>{t(`${message}`)}</p>
         </UpdateStyle>
       </UpdateContainer>

@@ -15,6 +15,7 @@ export const ListStyle = styled.ul`
     justify-content: center;
     gap: 16px;
   }
+
   @media all and (min-width: 1200px) {
     display: grid;
     grid-template-columns: auto auto auto;

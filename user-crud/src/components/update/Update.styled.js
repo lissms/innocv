@@ -6,6 +6,7 @@ export const UpdateContainer = styled.div`
   align-items: center;
   height: 88vh;
 `;
+
 export const UpdateStyle = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,12 +20,14 @@ export const UpdateStyle = styled.div`
   & .title {
     color: #6d5a7f;
   }
+
   & .from {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     margin-top: 32px;
+
     & label {
       font-size: 12px;
     }
@@ -37,6 +40,7 @@ export const UpdateStyle = styled.div`
     margin-bottom: 4px;
     margin-top: 10px;
   }
+
   & input {
     width: 100%;
     border-radius: 4px;
@@ -58,9 +62,9 @@ export const UpdateStyle = styled.div`
     border: 2px solid #6d5a7f;
     transition: all 0.5s;
     color: #6d5a7f;
-
     font-weight: bold;
   }
+
   & .button-save:disabled {
     background: #c5c5c5;
     border: 2px solid #969696;

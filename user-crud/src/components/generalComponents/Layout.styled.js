@@ -19,22 +19,27 @@ export const LayoutStyle = styled.div`
     font-size: 24px;
     padding: 5px;
   }
+
   & .logo {
     width: 100px;
   }
+
   & .title-logo {
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
+
   & .link--back {
     cursor: pointer;
     width: 60px;
     color: white;
   }
+
   & .content {
     background: linear-gradient(90deg, #3e5c7e 0%, #dc7082 100%);
   }
+
   & .translation {
     color: white;
     cursor: pointer;

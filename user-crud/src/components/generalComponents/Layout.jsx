@@ -9,8 +9,10 @@ import { useHistory } from "react-router-dom";
 //STYLES
 import { LayoutStyle, Content } from "./Layout.styled";
 
-//UTILITIES
+// IMAGES
 import logo from "../../images/innocv-logo.png";
+
+//UTILITIES
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -64,6 +66,9 @@ function Layout(props) {
   );
 }
 
-Layout.propTypes = {};
+Layout.propTypes = {
+  isButtonBackVisible: PropTypes.bool,
+  children: PropTypes.node,
+};
 
 export default Layout;

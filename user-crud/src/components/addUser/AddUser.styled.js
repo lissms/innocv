@@ -31,13 +31,16 @@ export const AddUserStyle = styled.div`
       font-size: 12px;
     }
   }
+
   & .add-name-label {
     margin-bottom: 4px;
   }
+
   & .add-birthday-label {
     margin-bottom: 4px;
     margin-top: 10px;
   }
+
   & input {
     width: 100%;
     border-radius: 4px;
@@ -59,9 +62,9 @@ export const AddUserStyle = styled.div`
     border: 2px solid #6d5a7f;
     transition: all 0.5s;
     color: #6d5a7f;
-
     font-weight: bold;
   }
+
   & .button-save:disabled {
     background: #c5c5c5;
     border: 2px solid #969696;
