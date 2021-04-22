@@ -7,7 +7,6 @@ export const UserStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 8px;
   padding: 12px;
 
   & .container_user {
