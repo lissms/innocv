@@ -2,6 +2,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+//REACT-REDUX
+import { connect } from "react-redux";
+import { setLoadingData } from "../../actionsCreator/actionsCreator";
+
 //REACT-ROUTER-DOM
 import { useHistory } from "react-router-dom";
 
@@ -50,9 +54,13 @@ function ModalWindow(props) {
             <Button
               background="#f17680"
               onClick={() => {
-                deleteUser(props.id);
-                closeModalWindow();
-                history.push("/");
+                props.setLoadingData(true);
+                deleteUser(props.id).then(() => {
+                  props.getUserList();
+
+                  closeModalWindow();
+                  history.push("/");
+                });
               }}
             >
               {t("remove")}
@@ -71,4 +79,8 @@ ModalWindow.propTypes = {
   setHasModalOpen: PropTypes.func,
 };
 
-export default ModalWindow;
+const mapDispatchToProps = {
+  setLoadingData,
+};
+
+export default connect(null, mapDispatchToProps)(ModalWindow);

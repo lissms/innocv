@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
+//REACT-REDUX
+import { connect } from "react-redux";
+import { setLoadingData } from "../../actionsCreator/actionsCreator";
+
 //SERVICE/ API
 import { getUser } from "../../services/user";
 
@@ -19,17 +23,23 @@ import dayjs from "dayjs";
 //STYLES
 import { ListStyle, ButtonContainer } from "./UserList.styled";
 
-function UserList() {
+function UserList(props) {
   //translation
   const { t } = useTranslation();
 
   const [userList, setUserList] = useState([]);
   const history = useHistory();
 
-  useEffect(() => {
+  const getUserList = () => {
+    props.setLoadingData(true);
     getUser().then((data) => {
+      props.setLoadingData(false);
       setUserList(data);
     });
+  };
+
+  useEffect(() => {
+    getUserList();
   }, []);
 
   const users = userList
@@ -37,7 +47,12 @@ function UserList() {
     .map((user) => {
       return (
         <li className="listElement" key={user.id}>
-          <User id={user.id} name={user.name} birthdate={dayjs(user.birthdate).format("DD MMMM YYYY")} />
+          <User
+            getUserList={getUserList}
+            id={user.id}
+            name={user.name}
+            birthdate={dayjs(user.birthdate).format("DD MMMM YYYY")}
+          />
         </li>
       );
     });
@@ -62,4 +77,8 @@ function UserList() {
   );
 }
 
-export default UserList;
+const mapDispatchToProps = {
+  setLoadingData,
+};
+
+export default connect(null, mapDispatchToProps)(UserList);

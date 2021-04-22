@@ -52,7 +52,5 @@ export const updateUser = (id, name, birthdate) => {
 export const deleteUser = (id) => {
   return fetch(`https://hello-world.innocv.com/api/user/${id}`, {
     method: "DELETE",
-  })
-    .then((response) => response.json())
-    .then((data) => data);
+  });
 };

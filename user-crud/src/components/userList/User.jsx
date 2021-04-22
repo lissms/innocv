@@ -62,6 +62,7 @@ function User(props) {
           userName={props.name}
           setHasModalOpen={setHasModalOpen}
           getValueForNewSections={getValueForNewSections}
+          getUserList={props.getUserList}
         />
       ) : null}
     </UserStyle>
@@ -72,6 +73,7 @@ User.propTypes = {
   name: PropTypes.string,
   birthdate: PropTypes.string,
   id: PropTypes.number,
+  getUserList: PropTypes.func,
 };
 
 export default User;

@@ -8,8 +8,15 @@ import UserList from "./components/userList/UserList";
 import UserDetail from "./components/userDetails/UserDetail.jsx";
 import AddUser from "./components/addUser/AddUser.jsx";
 import Update from "./components/update/Update.jsx";
+import Loader from "./components/generalComponents/Loader";
 
-function App() {
+//REDUX
+import { connect } from "react-redux";
+
+//PROPTYPES
+import PropTypes from "prop-types";
+
+function App(props) {
   return (
     <div className="App">
       <Switch>
@@ -26,8 +33,17 @@ function App() {
           <UserDetail />
         </Route>
       </Switch>
+      {props.isLoadingData ? <Loader /> : null}
     </div>
   );
 }
 
-export default App;
+App.propTypes = {
+  isLoadingData: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isLoadingData: state.isLoadingData,
+});
+
+export default connect(mapStateToProps, null)(App);
