@@ -38,7 +38,7 @@ const resources = {
       addNewUser: "Añade un nuevo usuario",
       save: "Guardar",
       messageSave1: "El usuario llamado",
-      messageSave2: "ha sido eliminado correctamente",
+      messageSave2: "ha sido guardado correctamente",
       messageUpdate: "El usuario ha sido modificado correctamente",
     },
   },
