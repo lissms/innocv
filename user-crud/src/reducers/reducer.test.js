@@ -1,17 +1,17 @@
 import reducer from "./reducer";
 
-// TESTS
-
-//When second parameter of my functions is : { type: "LOADING_DATA", payload: 2 } the functions return:isLoadingData: 2
-//Test Suites: 1 passed, 1 total
-//Tests:       1 passed,
-
-//When second parameter of my functions is : { type: "LOADING_DATA", payload: true } the functions return:isLoadingData: true
-//Test Suites: 1 passed, 1 total
-//Tests:       1 passed,
-
 describe("Function to manage the charger globally / reducer", () => {
-  test("Must change the initial state with the parameter that you pass in object. payload", () => {
+  test("Should change the receive state with the parameter that you pass in object. payload", () => {
     expect(reducer({ isLoadingData: false }, { type: "LOADING_DATA", payload: 2 })).toEqual({ isLoadingData: 2 });
+  });
+
+  test("Should return the initial state if it does not receive the first parameter", () => {
+    expect(reducer(undefined, {})).toEqual({ isLoadingData: false });
+  });
+
+  test("Should return the initial state if it type is diferent to LOADING_DATA", () => {
+    expect(reducer({ isLoadingData: "Hi there" }, { type: "Hello", payload: true })).toEqual({
+      isLoadingData: "Hi there",
+    });
   });
 });
