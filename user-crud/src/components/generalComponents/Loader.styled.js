@@ -6,7 +6,7 @@ export const LoaderContainerStyle = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background: #00000080;
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
