@@ -20,7 +20,7 @@ const resources = {
       save: "Save",
       messageSave1: "The user named",
       messageSave2: "has been added successfully.",
-      messageUpdate: "the user has been modified successfully",
+      messageUpdate: "The user has been modified successfully",
     },
   },
   es: {
