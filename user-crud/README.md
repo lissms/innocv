@@ -4,7 +4,7 @@
 ## Technologies  used.
 - React (hooks)
 - React-router-dom 
-- Styled-components ( dynamic props/ SASS / grid layout / flex)
+- Styled-components ( dynamic props / nest rules / grid layout / flex)
 - dayjs (to format dates)
 - react-i18next / i18next (Internationalization)
 - Jest (unit testing)
