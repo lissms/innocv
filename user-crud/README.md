@@ -1,4 +1,4 @@
-![innocv-logo](https://user-images.githubusercontent.com/70586226/115722324-2d3bcd00-a37f-11eb-89d6-9f1fb58bedd1.jpg) 
+
 # Technical test.
 
 ## Technologies  used.
