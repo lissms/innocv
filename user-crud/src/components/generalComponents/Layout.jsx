@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 import { LayoutStyle, Content } from "./Layout.styled";
 
 // IMAGES
-import logo from "../../images/innocv-logo.png";
+import logo from "../../images/loco-rosa.png";
 
 //UTILITIES
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

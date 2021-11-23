@@ -21,7 +21,7 @@ export const LayoutStyle = styled.div`
   }
 
   & .logo {
-    width: 100px;
+    width: 22%;
   }
 
   & .title-logo {
