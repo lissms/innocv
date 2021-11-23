@@ -1,5 +1,5 @@
 
-# Technical test.
+# User manager.
 
 ## Technologies  used.
 - React (hooks)
